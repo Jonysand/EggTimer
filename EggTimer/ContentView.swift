@@ -28,31 +28,28 @@ struct ContentView: View {
             // Setting timer
             HStack{
                 VStack{
-                    digitView(degree: 30, strokeColor: .orange)
-                    .onTapGesture {
+                    Button(action: {
                         self.userTimeInfo.timeRemaining += 10 * 60
                         if self.userTimeInfo.tenMinute>6 {self.userTimeInfo.timeRemaining -= 10 * 60}
-                    }
-                    digitView(degree: 30, strokeColor: .orange)
-                        .rotationEffect(.degrees(180))
-                        .onTapGesture {
-                            self.userTimeInfo.timeRemaining -= 10 * 60
-                            if self.userTimeInfo.timeRemaining<0 {self.userTimeInfo.timeRemaining=0}
-                    }
+                    }){ digitView(degree: 30, strokeColor: .orange) }
+                    Button(action: {
+                        self.userTimeInfo.timeRemaining -= 10 * 60
+                        if self.userTimeInfo.timeRemaining<0 {self.userTimeInfo.timeRemaining=0}
+                    }){
+                        digitView(degree: 30, strokeColor: .orange)
+                            .rotationEffect(.degrees(180))}
                 }
                 
                 VStack{
-                    digitView(degree: 30, strokeColor: .orange)
-                    .onTapGesture {
+                    Button(action: {
                         self.userTimeInfo.timeRemaining += 1 * 60
                         if self.userTimeInfo.tenMinute>6 {self.userTimeInfo.timeRemaining -= 1 * 60}
-                    }
-                    digitView(degree: 30, strokeColor: .orange)
-                        .rotationEffect(.degrees(180))
-                        .onTapGesture {
-                            self.userTimeInfo.timeRemaining -= 1 * 60
-                            if self.userTimeInfo.timeRemaining<0 {self.userTimeInfo.timeRemaining=0}
-                    }
+                    }){ digitView(degree: 30, strokeColor: .orange) }
+                    Button(action: {
+                        self.userTimeInfo.timeRemaining -= 1 * 60
+                        if self.userTimeInfo.timeRemaining<0 {self.userTimeInfo.timeRemaining=0}
+                    }){ digitView(degree: 30, strokeColor: .orange)
+                        .rotationEffect(.degrees(180)) }
                 }
                 VStack{
                     Circle()
@@ -60,30 +57,26 @@ struct ContentView: View {
                 }.padding()
                     .foregroundColor(.gray)
                 VStack{
-                    digitView(degree: 30, strokeColor: .yellow)
-                    .onTapGesture {
+                    Button(action: {
                         self.userTimeInfo.timeRemaining += 10
                         if self.userTimeInfo.tenMinute>6 {self.userTimeInfo.timeRemaining -= 10}
-                    }
-                    digitView(degree: 30, strokeColor: .yellow)
-                        .rotationEffect(.degrees(180))
-                        .onTapGesture {
-                            self.userTimeInfo.timeRemaining -= 10
-                            if self.userTimeInfo.timeRemaining<0 {self.userTimeInfo.timeRemaining=0}
-                    }
+                    }){ digitView(degree: 30, strokeColor: .yellow) }
+                    Button(action: {
+                        self.userTimeInfo.timeRemaining -= 10
+                        if self.userTimeInfo.timeRemaining<0 {self.userTimeInfo.timeRemaining=0}
+                    }){ digitView(degree: 30, strokeColor: .yellow)
+                        .rotationEffect(.degrees(180)) }
                 }
                 VStack{
-                    digitView(degree: 30, strokeColor: .yellow)
-                    .onTapGesture {
+                    Button(action: {
                         self.userTimeInfo.timeRemaining += 1
                         if self.userTimeInfo.tenMinute>6 {self.userTimeInfo.timeRemaining -= 1}
-                    }
-                    digitView(degree: 30, strokeColor: .yellow)
-                        .rotationEffect(.degrees(180))
-                        .onTapGesture {
-                            self.userTimeInfo.timeRemaining -= 1
-                            if self.userTimeInfo.timeRemaining<0 {self.userTimeInfo.timeRemaining=0}
-                    }
+                    }){ digitView(degree: 30, strokeColor: .yellow) }
+                    Button(action: {
+                        self.userTimeInfo.timeRemaining -= 1
+                        if self.userTimeInfo.timeRemaining<0 {self.userTimeInfo.timeRemaining=0}
+                    }){ digitView(degree: 30, strokeColor: .yellow)
+                        .rotationEffect(.degrees(180))}
                 }
             }
             .padding()
@@ -95,7 +88,7 @@ struct ContentView: View {
             if self.userTimeInfo.timeRemaining > 0 && self.userTimeInfo.timerIsRunning {
                 self.userTimeInfo.timeRemaining -= 1
                 self.userTimeInfo.timeCollapsed += 1
-//                print("Time Remaining:", self.userTimeInfo.timeRemaining)
+                //                print("Time Remaining:", self.userTimeInfo.timeRemaining)
             }
             
             if self.MM.isHitTable {
